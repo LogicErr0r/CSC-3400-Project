@@ -1,0 +1,105 @@
+{
+    "The Happy Place BBQ": {
+        "Breakfast": {
+            "Danish": [["Apple", "Cheese", "Raspberry", "Cinnamon Raisin"], "N", ["2.50"]],
+            "Muffin": [[],"N", ["2.50"]],
+            "Hash Brown": [[], "N", ["1.00"]],
+            "Corn Muffin": [[], "N", ["1.00"]],
+            "Brekfast Quesadilla": [[], "N", ["4.75"]],
+            "Fruit Cup": [[], "N", ["1.95"]],
+            "Assorted Cereal Bars": [[], "N", ["1.50"]],
+            "Happy Wrap": [["Bacon Egg and Cheese", "Sausage Egg and Cheese"], "N", ["4.75"]]
+        },
+        "Beverages": {
+            "Coffee": [[], "N", ["1.50"]],
+            "Tea": [[], "N", ["1.50"]],
+            "Orange Juice": [[], "N", ["2.29"]]
+        },
+        "Sandwich or Salad Meals": {
+            "Pulled Smoked Pork": [[], "N", ["5.95"]],
+            "Pulled Smoked Chicken": [[], "N", ["5.95"]],
+            "Smoked Beef Brisket": [[], "N", ["5.95"]],
+            "Smoked Portabella": [[], "N", ["5.95"]],
+            "Cheese Quesadilla": [[], "N", ["2.75"]],
+            "Meat Quesadilla": [["Pulled Pork", "Pulled Chicken", "Pulled Brisket", "Portabella"], "N", ["4.75"]],
+            "Salad Meal": [[], "N", ["5.95"]],
+            "Daily Special Meal": [[], "N", ["5.95"]],
+            "Daily Special Sandwich": [[], "N", ["4.25"]],
+            "Sandwich Only": [[], "N", ["4.25"]],
+            "Loaded Fries": [[], "N", ["4.50"]]
+        },
+        "Sides and More": {
+            "Baked Beans or Green Beans": [[], "N", ["1,50"]],
+            "Waffle Fries": [[], "N", ["1.50"]],
+            "Corn Muffin": [[], "N", ["1.00"]],
+            "Garden or Caesar Salad": [[], "N", ["4.25"]],
+            "Coke Products (Cans or Water)": [[], "N", ["1.25"]]
+        }
+    },
+
+    "Buckstop": {
+        "Breakfast": {
+            "SAUSAGE, EGG, AND CHEESE BAGEL": [[], "N", ["3.00"]],
+            "BACON, EGG, AND CHEESE BAGEL": [[], "N", ["3.00"]],
+            "EGG AND CHEESE BAGEL": [[], "N", ["2.50"]],
+            "BAGEL": [[], "N", ["1.50"]],
+            "SAUSAGE, EGG, AND CHEESE BISCUIT": [[], "N", ["2.75"]],
+            "BACON, EGG, AND CHEESE BISCUIT": [[], "N", ["2.75"]],
+            "EGG AND CHEESE BISCUIT": [[], "N", ["2.25"]],
+            "BISCUIT": [[], "N", ["1.25"]],
+            "MUFFINS": [[], "N", ["2.50"]],
+            "BREAKFAST PIZZA SLICE": [[], "N", ["2.75"]]
+        },
+        "Lunch": {
+            "HAMBURGER": [[], "N", ["3.50"]],
+            "CHEESEBURGER": [[], "N", ["3.75"]],
+            "DOUBLE BURGER": [[], "N", ["5.50"]],
+            "DOUBLE CHEESE BURGER": [[], "N", ["6.00"]],
+            "GRILLED CHICKEN": [[], "N", ["4.25"]],
+            "ALL BEEF HOT DOGS": [[], "N", ["2.75"]],
+            "MAHI MAHI": [[], "N", ["5.00"]],
+            "ITALIAN SAUSAGE": [[], "N", ["3.50"]],
+            "BLACK BEAN BURGER": [[], "N", ["3.75"]]
+        },
+        "Whole Pizza": {
+            "CHEESE": [[], "N", ["15.00"]],
+            "PEPPERONI": [[], "N", ["17.00"]],
+            "VEGETARIAN": [[], "Y", ["18.00"]],
+            "MEAT LOVERS": [[], "N", ["19.00"]],
+            "SUPREME": [[], "N", ["20.00"]],
+            "DAILY SPECIAL": [[], "N", ["18.00"]],
+            "Whole Flatbread": [["Cheese", "Pepp", "Supreme", "Veggie"], "N", ["12.00"]],
+            "Half Flatbread": [["Cheese", "Pepp", "Supreme", "Veggie"], "N", ["6.00"]],
+            "ADD EXTRA TOPPINGS": [[], "N", ["1.50"]]
+        },
+        "By The Slice": {
+            "CHEESE": [[], "N", ["2.00"]],
+            "PEPPERONI": [[], "N", ["2.75"]],
+            "VEGETARIAN": [[], "Y", ["3.25"]],
+            "MEAT LOVERS": [[], "N", ["3.25"]],
+            "SUPREME": [[], "N", ["3.50"]],
+            "DAILY SPECIAL": [[], "N", ["3.25"]],
+            "Flatbread": [["Cheese", "Pepp", "Supreme", "Veggie"], "N", ["1.75"]]
+        },
+        "Sides And Extras": {
+            "REGULAR COMBO (CHIPS & CAN SODA OR WATER)": [[], "N", ["2.00"]],
+            "SPECIALTY COMBO (GRILLED VEGGIES & CAN SODA OR WATER)": [[], "N", ["2.50"]],
+            "GRILLED VEGGIES": [[], "N", ["1.50"]],
+            "BAG OF CHIPS": [[], "N", ["1.25"]]
+        },
+        "Beverages": {
+            "WATER BOTTLE": [[], "N", ["1.25"]],
+            "12oz CAN OF SODA": [["Coke", "Diet Coke", "Sprite", "Barq's Root Beer", "Tea"], "N", ["1.00"]]
+        }
+    },
+
+    "TuTu's Cyber Cafe": {
+        "Coffee": {
+            "COFFEE OF THE DAY": [["TALL", "GRANDE", "VENTI"], "N", ["2.00", "2.20", "2.50"]],
+            "DECAF COFFEE": [["TALL", "GRANDE", "VENTI"], "N", ["2.00", "2.20", "2.50"]]
+        },
+        "Espresso Drinks": {
+            
+        }
+    }
+}
