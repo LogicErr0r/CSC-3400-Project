@@ -99,7 +99,9 @@
             "DECAF COFFEE": [["TALL", "GRANDE", "VENTI"], "N", ["2.00", "2.20", "2.50"]]
         },
         "Espresso Drinks": {
-            
+            "CAFFE LATTE": [["TALL", "GRANDE", "VENTI"], "N", ["3.20", "3.90", "4.20"]],
+            "CAFFE MOCHA": [["TALL", "GRANDE", "VENTI"], "N", ["3.50", "4.40", "4.70"]],
+            "CARMEL MACCHIATO": [["TALL", "GRANDE", "VENTI"], "N", ["3.80", "4.60", "5.00"]]
         }
     }
 }
