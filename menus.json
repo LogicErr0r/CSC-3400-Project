@@ -101,7 +101,18 @@
         "Espresso Drinks": {
             "CAFFE LATTE": [["TALL", "GRANDE", "VENTI"], "N", ["3.20", "3.90", "4.20"]],
             "CAFFE MOCHA": [["TALL", "GRANDE", "VENTI"], "N", ["3.50", "4.40", "4.70"]],
-            "CARMEL MACCHIATO": [["TALL", "GRANDE", "VENTI"], "N", ["3.80", "4.60", "5.00"]]
+            "CARMEL MACCHIATO": [["TALL", "GRANDE", "VENTI"], "N", ["3.80", "4.60", "5.00"]],
+            "CAPPUCCINO": [["TALL", "GRANDE", "VENTI"], "N", ["3.20", "3.75", "4.00"]],
+            "WHITE CHOCOLATE MOCHA": [["TALL", "GRANDE", "VENTI"], "N", ["4.00", "4.50", "4.75"]],
+            "CAFFE AMERICANO": [["TALL", "GRANDE", "VENTI"], "N", ["2.50", "2.75", "3.00"]]
+        },
+        "Iced Drinks": {
+            "ICED CAFFE LATTE": [["TALL", "GRANDE", "VENTI"], "N", ["3.20", "3.90", "4.20"]],
+            "ICED CAFFE MOCHA": [["TALL", "GRANDE", "VENTI"], "N", ["3.50", "4.40", "4.70"]],
+            "ICED CARAMEL MACCHIATO": [["TALL", "GRANDE", "VENTI"], "N", ["3.80", "4.60", "5.00"]],
+            "ICED CHAI LATTE": [["TALL", "GRANDE", "VENTI"], "N", ["3.85", "4.60", "5.00"]],
+            "ICED WHITE CHOCOLATE MOCHA": [["TALL", "GRANDE", "VENTI"], "N", ["4.00", "4.50", "4.75"]],
+            "ICED COFFEE": [["TALL", "GRANDE", "VENTI"], "N", ["2.20", "2.70", "3.20"]]
         }
     }
 }
