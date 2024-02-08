@@ -16,9 +16,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(Duration(seconds: 12), (){
+    Future.delayed(const Duration(seconds: 4), (){
 
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>Login(),));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(),));
     });
 
   }
@@ -36,13 +36,18 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        width: double.infinity,
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/Splashscrenimage.png"),
-            fit: BoxFit.cover,
-          )
+            fit: BoxFit.contain,
+            ),
+            gradient: LinearGradient(
+              colors: [Color.fromRGBO(237, 38, 71, 1.0), Color.fromRGBO(237, 38, 71, 1.0)],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft)
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // Add other widgets here
