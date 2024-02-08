@@ -123,6 +123,19 @@
             "JAVA CHIP": [["GRANDE"], "N", ["4.75"]],
             "DBL CHOC CHIP": [["GRANDE"], "N", ["4.75"]]
         },
-        
+        "Alternatives": {
+            "HOT TEA": [["TALL", "GRANDE", "VENTI"], "N", ["1.70", "2.00", "2.25"]],
+            "ICED TEA": [["TALL", "GRANDE", "VENTI"], "N", ["1.75", "2.20", "2.70"]],
+            "CHAI LATTE": [["TALL", "GRANDE", "VENTI"], "N", ["3.85", "4.10", "4.35"]],
+            "HOT CHOCOLATE": [["TALL", "GRANDE", "VENTI"], "N", ["3.00", "3.50", "3.70"]],
+            "CAFFE AMERICANO": [["TALL", "GRANDE", "VENTI"], "N", ["2.50", "2.75", "3.00"]],
+            "CREAMICE": [["GRANDE", "VENTI"], "N", ["4.50", "4.75"]]
+        },
+        "Extras": {
+            "SINGLE ESPRESSO": [[], "N", ["2.00"]],
+            "DOUBLE ESPRESSO": [[], "N", ["2.20"]],
+            "EXTRA SHOT": [[], "N", ["0.75"]],
+            "ADD FLAVOR SYRUP": [[], "N", ["0.75"]]
+        }
     }
 }
