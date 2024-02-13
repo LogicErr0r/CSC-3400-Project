@@ -16,9 +16,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(const Duration(seconds: 4), (){
+    Future.delayed(const Duration(seconds: 12), (){
 
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(),));
+      //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(onTap:,),));
     });
 
   }

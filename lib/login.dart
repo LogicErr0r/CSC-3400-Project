@@ -5,7 +5,8 @@ import 'package:mocsmunchv2/components/loginTextfeild.dart';
 import 'package:mocsmunchv2/components/loginTitle.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  final Function()? onTap;
+  const LoginPage({super.key, required this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -13,31 +14,80 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // text editing controllers
-  final usernameController = TextEditingController();
-
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   // sign user in method
-  void signUserIn() async{
+  void signUserIn() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
 
-    //loading circle
-    showDialog(context: context, builder: (context){
-      return const Center(
-        child: CircularProgressIndicator(),
+    // try sign in
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
       );
+      // pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      // pop the loading circle
+      Navigator.pop(context);
+      // WRONG EMAIL
+      if (e.code == 'user-not-found') {
+        // show error to user
+        wrongEmailMessage();
+      }
 
-    },
+      // WRONG PASSWORD
+      else if (e.code == 'wrong-password') {
+        // show error to user
+        wrongPasswordMessage();
+      }
+    }
+  }
+
+  // wrong email message popup
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          backgroundColor: Colors.deepPurple,
+          title: Center(
+            child: Text(
+              'Incorrect Email',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
     );
+  }
 
-
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: usernameController.text,
-      password: passwordController.text,
-      
+  // wrong password message popup
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          backgroundColor: Colors.deepPurple,
+          title: Center(
+            child: Text(
+              'Incorrect Password',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
     );
-
-    //pop the load circle
-    Navigator.pop(context);
   }
 
   @override
@@ -46,6 +96,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
+          child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -70,10 +121,10 @@ class _LoginPageState extends State<LoginPage> {
 
               const SizedBox(height: 25),
 
-              // username textfield
+              // email textfield
               MyTextField(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: emailController,
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -106,6 +157,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // sign in button
               MyButton(
+                text: "Login",
                 onTap: signUserIn,
               ),
 
@@ -142,16 +194,16 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               // google + apple sign in buttons
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   // google button
-                  SquareTile(imagePath: 'assets/GoogleLogo.png'),
+                  SquareTile(imagePath: 'lib/assets/GoogleLogo.png'),
 
                   SizedBox(width: 25),
 
                   // apple button
-                  //SquareTile(imagePath: 'assets/AppleLogo.png')
+                  SquareTile(imagePath: 'lib/assets/AppleLogo.png')
                 ],
               ),
 
@@ -166,12 +218,15 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   const SizedBox(width: 4),
-                  const Text(
+                  GestureDetector(
+                    onTap: widget.onTap,
+                  child: const Text(
                     'Register now',
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
                   ),
                 ],
               )
@@ -179,6 +234,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+      )
     );
   }
 }
