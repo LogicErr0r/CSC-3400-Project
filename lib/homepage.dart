@@ -20,14 +20,14 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: signUserOut,
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           )
         ],
       ),
       body: Center(
           child: Text(
-        "LOGGED IN AS: " + user.email!,
-        style: TextStyle(fontSize: 20),
+        "LOGGED IN AS: ${user.email!}",
+        style: const TextStyle(fontSize: 20),
       )),
     );
   }

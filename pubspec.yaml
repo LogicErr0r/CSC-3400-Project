@@ -60,7 +60,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets: 
-    - lib/assets/Splashscrenimage.png
+    - lib/assets/SplashScreenImage.png
     - lib/assets/GoogleLogo.png
     - lib/assets/AppleLogo.png
   # To add assets to your application, add an assets section, like this:

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mocsmunchv2/login.dart';
-import 'login.dart';
-import 'HomePage.dart';
-import 'RegisterPage.dart';
+import 'package:mocsmunchv2/loginPage.dart';
+import 'package:mocsmunchv2/homePage.dart';
+import 'package:mocsmunchv2/registerPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mocsmunchv2/authpage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mocsmunchv2/splash.dart';
 import 'firebase_options.dart';
-import 'package:mocsmunchv2/authpage.dart';
+import 'splashScreenPage.dart';
+import 'package:mocsmunchv2/splashScreenPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: SplashScreen(),
     );
   }
 }

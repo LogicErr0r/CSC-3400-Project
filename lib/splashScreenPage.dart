@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mocsmunchv2/login.dart';
+import 'package:mocsmunchv2/loginPage.dart';
+import 'authPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,13 +17,17 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(const Duration(seconds: 12), (){
+    Future.delayed(const Duration(seconds: 4), (){
 
-      //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(onTap:,),));
+      //Move from the splash screen to the auth page
+  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(onTap: () {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AuthPage()));
+},)));
+
     });
 
   }
-
+  
   @override
   void dispose() {
 
@@ -31,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/Splashscrenimage.png"),
+            image: AssetImage("lib/assets/SplashScreenImage.png"),
             fit: BoxFit.contain,
             ),
             gradient: LinearGradient(
