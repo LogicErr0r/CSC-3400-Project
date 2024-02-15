@@ -20,9 +20,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Future.delayed(const Duration(seconds: 4), (){
 
       //Move from the splash screen to the auth page
-  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage(onTap: () {
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AuthPage()));
-},)));
 
     });
 

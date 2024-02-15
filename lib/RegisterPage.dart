@@ -182,7 +182,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-            
+                
+            const SizedBox(height: 25),
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
