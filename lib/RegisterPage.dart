@@ -93,8 +93,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
             
-                const SizedBox(height: 50),
-            
                 // Let's create an account for you!
                 const Text(
                   'Let\'s get started, Munch!',
