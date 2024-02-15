@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/components/loginButton.dart';
-import 'package:mocsmunchv2/components/loginTextfeild.dart';
+import 'package:mocsmunchv2/components/loginTextField.dart';
 import 'package:mocsmunchv2/components/loginTitle.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -16,58 +16,56 @@ class _RegisterPageState extends State<RegisterPage> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-
+  final confirmedPasswordController = TextEditingController();
 
   // sign user up method
   void signUserUp() async {
-    // show loading circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
 
-    // try creating the user
-    try {
-      //check if password is confirmed
-      if (passwordController.text == confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
-      } else {
-        //show error message, passwords don't match
-        showErrorMessage("Passwords don't match!");
-      }
-      // pop the loading circle
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the loading circle
-      Navigator.pop(context);
-      // show error message
-      showErrorMessage(e.code);
+    //show loading circle
+    showDialog(context: context, builder: (context) {
+      return const Center(child: CircularProgressIndicator()
+      );
     }
+  );
+
+    //try creating the user
+    try{
+      if(passwordController.text == confirmedPasswordController.text){
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text, 
+        password: passwordController.text,
+      );
+    } else{
+      //show error message, passwords don't match
+      showErrorMessage("Passwords don't match");
+    }
+
+      //pop the loading circle
+      Navigator.pop(context);
+     } on FirebaseAuthException catch (e) {
+
+      //pop the loading circle
+      Navigator.pop(context);
+
+      //Show Error Message
+      showErrorMessage(e.code);
+     }
   }
 
-  // error message to user
+  //Error message to user
   void showErrorMessage(String message) {
     showDialog(
-      context: context,
-      builder: (context) {
+      context: context, 
+      builder: (context){
         return AlertDialog(
-          backgroundColor: Colors.deepPurple,
-          title: Center(
-            child: Text(
-              message,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
+        backgroundColor: Colors.deepPurple,
+        title: Center(
+          child: Text(message,
+          style: const TextStyle(color: Colors.white)
+          ,),
+        ),
         );
-      },
+      }
     );
   }
 
@@ -82,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
             
                 // logo
                 const Icon(
@@ -90,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   size: 50,
                 ),
             
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
             
                 // Let's create an account for you!
                 Text(
@@ -103,7 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 const SizedBox(height: 25),
             
-                // email textfield
+                // Email textfield
                 MyTextField(
                   controller: emailController,
                   hintText: 'Email',
@@ -118,16 +116,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Password',
                   obscureText: true,
                 ),
-
+            
                 const SizedBox(height: 10),
 
-                // confirm textfield
+                // confirm password textfield
                 MyTextField(
-                  controller: confirmPasswordController,
+                  controller: confirmedPasswordController,
                   hintText: 'Confirm Password',
                   obscureText: true,
                 ),
-                
             
                 const SizedBox(height: 10),
             
@@ -149,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 // sign in button
                 MyButton(
-                  text: "Sign Up",
+                  text: "Sign up!",
                   onTap: signUserUp,
                 ),
             
@@ -190,12 +187,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(imagePath: 'lib/assets/GoogleLogo.png'),
+                    SquareTile(imagePath: 'lib/images/google.png'),
             
                     SizedBox(width: 25),
             
                     // apple button
-                    SquareTile(imagePath: 'lib/assets/AppleLogo.png')
+                    SquareTile(imagePath: 'lib/images/apple.png')
                   ],
                 ),
             

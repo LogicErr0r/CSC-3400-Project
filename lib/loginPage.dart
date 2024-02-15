@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/components/loginButton.dart';
-import 'package:mocsmunchv2/components/loginTextfeild.dart';
-import 'package:mocsmunchv2/components/loginTitle.dart';
+import 'package:mocsmunchv2/components/loginTextField.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -15,226 +14,195 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   // sign user in method
   void signUserIn() async {
-    // show loading circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
 
-    // try sign in
-    try {
+    //show loading circle
+    showDialog(context: context, builder: (context) {
+      return const Center(child: CircularProgressIndicator()
+      );
+    }
+  );
+
+    //try sign in
+    try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
+        email: emailController.text, 
         password: passwordController.text,
       );
-      // pop the loading circle
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the loading circle
-      Navigator.pop(context);
-      // WRONG EMAIL
-      if (e.code == 'user-not-found') {
-        // show error to user
-        wrongEmailMessage();
-      }
 
-      // WRONG PASSWORD
-      else if (e.code == 'wrong-password') {
-        // show error to user
-        wrongPasswordMessage();
-      }
-    }
+      //pop the loading circle
+      Navigator.pop(context);
+     } on FirebaseAuthException catch (e) {
+
+      //pop the loading circle
+      Navigator.pop(context);
+
+      //Show Error Message
+      showErrorMessage(e.code);
+     }
   }
 
-  // wrong email message popup
-  void wrongEmailMessage() {
+  //Error message to user
+  void showErrorMessage(String message) {
     showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.deepPurple,
-          title: Center(
-            child: Text(
-              'Incorrect Email',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+      context: context, 
+      builder: (context){
+        return AlertDialog(
+        backgroundColor: Colors.black,
+        title: Center(
+          child: Text(message,
+          style: const TextStyle(color: Colors.white)
+          ,),
+        ),
         );
-      },
+      }
     );
   }
 
-  // wrong password message popup
-  void wrongPasswordMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.deepPurple,
-          title: Center(
-            child: Text(
-              'Incorrect Password',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(237, 38, 71, 1.0),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50),
-
-              // logo
-              const Icon(
-                Icons.lock,
-                size: 100,
-              ),
-
-              const SizedBox(height: 50),
-
-              // welcome back, you've been missed!
-              Text(
-                'Welcome back you\'ve been missed!',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
-                ),
-              ),
-
-              const SizedBox(height: 25),
-
-              // email textfield
-              MyTextField(
-                controller: emailController,
-                hintText: 'Email',
-                obscureText: false,
-              ),
-
-              const SizedBox(height: 10),
-
-              // password textfield
-              MyTextField(
-                controller: passwordController,
-                hintText: 'Password',
-                obscureText: true,
-              ),
-
-              const SizedBox(height: 10),
-
-              // forgot password?
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+            
+                // logo at the top
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
+                    Container(
+                      width: 100, // Specify the desired width
+                      height: 100, // Specify the desired height
+                      child: Image.asset('lib/assets/MocsMunchLogo.png'),
                     ),
                   ],
                 ),
-              ),
 
-              const SizedBox(height: 25),
 
-              // sign in button
-              MyButton(
-                text: "Login",
-                onTap: signUserIn,
-              ),
-
-              const SizedBox(height: 50),
-
-              // or continue with
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
+            
+                const SizedBox(height: 50),
+            
+                // welcome back, you've been missed!
+                const Text(
+                  'Mocs Munch v0.0.1',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+            
+                const SizedBox(height: 25),
+            
+                // Email textfield
+                MyTextField(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
+            
+                const SizedBox(height: 10),
+            
+                // password textfield
+                MyTextField(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
+                ),
+            
+                const SizedBox(height: 10),
+            
+                // forgot password?
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+            
+                const SizedBox(height: 25),
+            
+                // sign in button
+                MyButton(
+                  text: "Sign in!",
+                  onTap: signUserIn,
+                ),
+            
+                const SizedBox(height: 50),
+            
+                // or continue with
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          'Not a member?',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            
+                const SizedBox(height: 50),
+            
+                const SizedBox(height: 50),
+            
+                // not a member? register now
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
+                    const Text(
+                      'Tap here to',
+                      style: TextStyle(color: Colors.white),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
+                    const SizedBox(width: 4),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: const Text(
+                        'Register now',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
-                ),
-              ),
-
-              const SizedBox(height: 50),
-
-              // google + apple sign in buttons
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // google button
-                  SquareTile(imagePath: 'lib/assets/GoogleLogo.png'),
-
-                  SizedBox(width: 25),
-
-                  // apple button
-                  SquareTile(imagePath: 'lib/assets/AppleLogo.png')
-                ],
-              ),
-
-              const SizedBox(height: 50),
-
-              // not a member? register now
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Not a member?',
-                    style: TextStyle(color: Colors.grey[700]),
-                  ),
-                  const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: widget.onTap,
-                  child: const Text(
-                    'Register now',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
-      )
     );
   }
 }

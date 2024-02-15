@@ -1,6 +1,6 @@
   import 'package:firebase_auth/firebase_auth.dart';
   import 'package:flutter/material.dart';
-  import 'package:mocsmunchv2/homepage.dart';
+  import 'package:mocsmunchv2/homePage.dart';
   import 'package:mocsmunchv2/LoginOrRegistar.dart';
 
   class AuthPage extends StatelessWidget {
