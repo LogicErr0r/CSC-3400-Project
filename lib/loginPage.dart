@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 100, // Specify the desired width
                       height: 100, // Specify the desired height
                       child: Image.asset('lib/assets/MocsMunchLogo.png'),
@@ -172,10 +172,6 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-            
-                const SizedBox(height: 50),
-            
-                const SizedBox(height: 50),
             
                 // not a member? register now
                 Row(

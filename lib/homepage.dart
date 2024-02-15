@@ -5,7 +5,7 @@ import 'package:mocsmunchv2/LoginOrRegistar.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  var user = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser!;
 
   // sign user out method
   void signUserOut() {

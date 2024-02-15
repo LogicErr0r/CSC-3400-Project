@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/components/loginButton.dart';
 import 'package:mocsmunchv2/components/loginTextField.dart';
-import 'package:mocsmunchv2/components/loginTitle.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -73,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(237, 38, 71, 1.0),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -82,19 +81,25 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 const SizedBox(height: 50),
             
-                // logo
-                const Icon(
-                  Icons.lock,
-                  size: 50,
+                // logo at the top
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 100, // Specify the desired width
+                      height: 100, // Specify the desired height
+                      child: Image.asset('lib/assets/MocsMunchLogo.png'),
+                    ),
+                  ],
                 ),
             
                 const SizedBox(height: 50),
             
                 // Let's create an account for you!
-                Text(
-                  'Let\'s create an account for you!',
+                const Text(
+                  'Let\'s get started, Munch!',
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
@@ -129,14 +134,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 10),
             
                 // forgot password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
+                        style: TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
@@ -166,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'Or continue with',
+                          'Already have an account?',
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -180,31 +185,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
             
-                const SizedBox(height: 50),
-            
-                // google + apple sign in buttons
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // google button
-                    SquareTile(imagePath: 'lib/images/google.png'),
-            
-                    SizedBox(width: 25),
-            
-                    // apple button
-                    SquareTile(imagePath: 'lib/images/apple.png')
-                  ],
-                ),
-            
-                const SizedBox(height: 50),
-            
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextStyle(color: Colors.grey[700]),
+                    const Text(
+                      'Tap here to',
+                      style: TextStyle(color: Colors.white),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
@@ -212,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: const Text(
                         'Login now',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
