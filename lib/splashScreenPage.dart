@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mocsmunchv2/loginPage.dart';
 import 'authPage.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,9 +20,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
       //Move from the splash screen to the auth page
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AuthPage()));
-
-    });
-
+      }
+    );
   }
   
   @override
