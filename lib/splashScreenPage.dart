@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mocsmunchv2/login.dart';
+import 'authPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,13 +16,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    Future.delayed(Duration(seconds: 12), (){
+    Future.delayed(const Duration(seconds: 4), (){
 
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>Login(),));
-    });
-
+      //Move from the splash screen to the auth page
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const AuthPage()));
+      }
+    );
   }
-
+  
   @override
   void dispose() {
 
@@ -31,18 +32,22 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        width: double.infinity,
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/Splashscrenimage.png"),
-            fit: BoxFit.cover,
-          )
+            image: AssetImage("lib/assets/SplashScreenImage.png"),
+            fit: BoxFit.contain,
+            ),
+            gradient: LinearGradient(
+              colors: [Color.fromRGBO(237, 38, 71, 1.0), Color.fromRGBO(237, 38, 71, 1.0)],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft)
         ),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // Add other widgets here

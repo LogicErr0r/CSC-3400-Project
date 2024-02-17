@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640043129439",
+    "project_id": "mocsmunch-9adb3",
+    "storage_bucket": "mocsmunch-9adb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640043129439:android:54c31dd3e4038d012719ea",
+        "android_client_info": {
+          "package_name": "com.example.mocsmunchv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcsEYbWNaOzGbyBs1Ns-AQcJR_c32SZYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
