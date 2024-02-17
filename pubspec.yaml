@@ -60,6 +60,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets: 
+<<<<<<< HEAD
 
   #Images
     - lib/assets/SplashScreenImage.png
@@ -68,6 +69,9 @@ flutter:
     - lib/assets/MocsMunchLogo.png
 
   #JSON File
+=======
+    - assets/Splashscrenimage.png
+>>>>>>> ec6cdb4dedf027bc0e345935596822f968258dea
     - assets/menus.json
   # To add assets to your application, add an assets section, like this:
   # assets:
