@@ -36,13 +36,13 @@ class _LoginPageState extends State<LoginPage> {
 
       //pop the loading circle
       Navigator.pop(context);
-     } on FirebaseAuthException catch (e) {
+     } on FirebaseAuthException {
 
       //pop the loading circle
       Navigator.pop(context);
 
       //Show Error Message
-      showErrorMessage(e.code);
+      showErrorMessage("Incorrect Email or Password was entered");
      }
   }
 
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
             
                 // sign in button
                 MyButton(
-                  text: "Sign in!",
+                  text: "Login",
                   onTap: signUserIn,
                 ),
             
@@ -177,18 +177,21 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Tap here to',
-                      style: TextStyle(color: Colors.white),
-                    ),
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: widget.onTap,
-                      child: const Text(
-                        'Register now',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                      child: Container(
+                        padding: const EdgeInsets.all(10), // Add padding around the text
+                        decoration: BoxDecoration(
+                          color: Colors.black, // Set background color to black
+                          borderRadius: BorderRadius.circular(8), // Optional: Add border radius
+                        ),
+                        child: const Text(
+                          'Create a New Account',
+                          style: TextStyle(
+                            color: Colors.white, // Set text color to white
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                     ),

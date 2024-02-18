@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mocsmunchv2/loginPage.dart';
-import 'package:mocsmunchv2/registerPage.dart';
+import 'package:mocsmunchv2/pages/loginPages/loginPage.dart';
+import 'package:mocsmunchv2/pages/loginPages/registerPage.dart';
+
 
 
 class LoginOrRegisterPage extends StatefulWidget {

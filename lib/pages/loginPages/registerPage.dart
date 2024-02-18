@@ -131,25 +131,11 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 const SizedBox(height: 10),
             
-                // forgot password?
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-            
                 const SizedBox(height: 25),
             
                 // sign in button
                 MyButton(
-                  text: "Sign up!",
+                  text: "Create account",
                   onTap: signUserUp,
                 ),
             
@@ -166,11 +152,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: Colors.grey[400],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           'Already have an account?',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                       Expanded(
@@ -188,18 +174,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Tap here to',
-                      style: TextStyle(color: Colors.white),
-                    ),
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: widget.onTap,
-                      child: const Text(
-                        'Login now',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                      child: Container(
+                        padding: const EdgeInsets.all(10), // Add padding around the text
+                        decoration: BoxDecoration(
+                          color: Colors.black, // Set background color to black
+                          borderRadius: BorderRadius.circular(8), // Optional: Add border radius
+                        ),
+                        child: const Text(
+                          'Login with Existing Account',
+                          style: TextStyle(
+                            color: Colors.white, // Set text color to white
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                     ),
