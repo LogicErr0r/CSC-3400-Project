@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'authPage.dart';
+import 'package:mocsmunchv2/pages/loginPages/authPage.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
