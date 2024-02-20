@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/components/loginButton.dart';
 import 'package:mocsmunchv2/components/loginTextField.dart';
+
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -17,54 +19,71 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmedPasswordController = TextEditingController();
 
-  // sign user up method
+ // sign user up method
   void signUserUp() async {
+    // Show loading circle
+    showDialog(
+      context: context,
+      barrierDismissible: false, // User must tap button to dismiss
+      builder: (context) {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
 
-    //show loading circle
-    showDialog(context: context, builder: (context) {
-      return const Center(child: CircularProgressIndicator()
-      );
-    }
-  );
+    // Try creating the user
+    try {
+      if (passwordController.text == confirmedPasswordController.text) {
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
 
-    //try creating the user
-    try{
-      if(passwordController.text == confirmedPasswordController.text){
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text, 
-        password: passwordController.text,
-      );
-    } else{
-      //show error message, passwords don't match
-      showErrorMessage("Passwords don't match");
-    }
+        // Get the user ID from the created user
+        String userId = userCredential.user!.uid;
 
-      //pop the loading circle
+        // Use the user ID to create a document in the 'users' collection in Firestore
+        await FirebaseFirestore.instance.collection('users').doc(userId).set({
+          'email': emailController.text,
+          // Add other user info you'd like to store, such as 'name', 'createdAt', etc.
+        });
+
+        // Pop the loading circle
+        Navigator.pop(context);
+
+        // Navigate to another page or show a success message if needed
+        // ...
+
+      } else {
+        // Pop the loading circle
+        Navigator.pop(context);
+
+        // Show error message, passwords don't match
+        showErrorMessage("Passwords don't match");
+      }
+    } on FirebaseAuthException catch (e) {
+      // Pop the loading circle
       Navigator.pop(context);
-     } on FirebaseAuthException catch (e) {
 
-      //pop the loading circle
-      Navigator.pop(context);
-
-      //Show Error Message
-      showErrorMessage(e.code);
-     }
+      // Show error message
+      showErrorMessage(e.message ?? "An unknown error occurred");
+    }
   }
 
-  //Error message to user
+  // Error message to user
   void showErrorMessage(String message) {
     showDialog(
-      context: context, 
-      builder: (context){
+      context: context,
+      builder: (context) {
         return AlertDialog(
-        backgroundColor: Colors.deepPurple,
-        title: Center(
-          child: Text(message,
-          style: const TextStyle(color: Colors.white)
-          ,),
-        ),
+          backgroundColor: Colors.deepPurple,
+          title: Center(
+            child: Text(
+              message,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
         );
-      }
+      },
     );
   }
 

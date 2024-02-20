@@ -3,6 +3,8 @@ import 'package:mocsmunchv2/pages/loginPages/loginPage.dart';
 import 'package:mocsmunchv2/pages/loginPages/registerPage.dart';
 
 
+//This page is just logic that decies to bring the user to the login page or register page
+
 
 class LoginOrRegisterPage extends StatefulWidget {
   const LoginOrRegisterPage({super.key});

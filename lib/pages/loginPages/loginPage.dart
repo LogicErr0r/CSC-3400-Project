@@ -38,8 +38,6 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
      } on FirebaseAuthException {
 
-      //pop the loading circle
-      Navigator.pop(context);
 
       //Show Error Message
       showErrorMessage("Incorrect Email or Password was entered");
