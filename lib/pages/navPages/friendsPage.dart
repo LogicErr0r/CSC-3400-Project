@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FriendsPage extends StatefulWidget {
+  const FriendsPage({super.key});
+
   @override
   _FriendsPageState createState() => _FriendsPageState();
 }
@@ -13,17 +15,17 @@ class _FriendsPageState extends State<FriendsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Friends Page'),
+        title: const Text('Friends Page'),
         backgroundColor: Colors.red,
       ),
       body: Container(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
             // Search bar
             TextField(
               controller: _filter,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Search For Friends',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
@@ -31,7 +33,7 @@ class _FriendsPageState extends State<FriendsPage> {
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Center(
                 child: Text(
                   'You currently have no friends',

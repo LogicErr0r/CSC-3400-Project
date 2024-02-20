@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mocsmunchv2/pages/loginPages/authPage.dart';
 import 'package:mocsmunchv2/pages/navPages/friendsPage.dart';
+import 'package:mocsmunchv2/pages/miscPages/settingsPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,15 +24,19 @@ class _HomePageState extends State<HomePage> {
 
   void goToSettingsPage() {
     // Navigate to settings page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SettingsPage()),
+    );
   }
 
   int _selectedIndex = 0;
 
   // Removed 'static const' from _pages list
   final List<Widget> _pages = [
-    Text('Interactive Map here'), // Example Page
-    FriendsPage(), //Friends Page
-    Text('All Food Menu Tabs here'), // Example Page
+    const Text('Interactive Map here'), // Example Page
+    const FriendsPage(), //Friends Page
+    const Text('All Food Menu Tabs here'), // Example Page
   ];
 
   void _onItemTapped(int index) {
