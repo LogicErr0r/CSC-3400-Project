@@ -20,12 +20,12 @@ class _LoginPageState extends State<LoginPage> {
   // sign user in method
   void signUserIn() async {
 
-    //show loading circle
+    /*show loading circle
     showDialog(context: context, builder: (context) {
       return const Center(child: CircularProgressIndicator()
       );
     }
-  );
+  ); */
 
     //try sign in
     try{

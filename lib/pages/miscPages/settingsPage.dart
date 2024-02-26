@@ -12,7 +12,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Settings',
           style: TextStyle(color: Colors.white), // Make the text white
         ),
@@ -21,19 +21,19 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
-        color: Color.fromRGBO(237, 38, 71, 1.0), // Change the background color
+        color: const Color.fromRGBO(237, 38, 71, 1.0), // Change the background color
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             // User Profile Picture
-            CircleAvatar(
+            const CircleAvatar(
               radius: 90,
               //backgroundImage: AssetImage('assets/profile_picture.jpg'), // Provide your image path here
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // User's Name
-            Text(
+            const Text(
               'FirstName LastName', // Your generic name here
               style: TextStyle(
                 fontSize: 18,
@@ -41,12 +41,12 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Settings 1 - Push Notifications
             ListTile(
               title:
-                Text(
+                const Text(
                   'Enable Push Notifications', // Your generic name here
                   style: TextStyle(
                   color: Colors.white,
@@ -65,13 +65,13 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             // Settings 2 - Manage Account
             ListTile(
               title:
-                Text(
+                const Text(
                   'Manage Account', // Your generic name here
                   style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              trailing: Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
+              trailing: const Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
               onTap: () {
                 // Handle navigation to account management page
               },
@@ -80,13 +80,13 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             // Settings 3 - Change Student/Delivery Mode
             ListTile(
               title:
-                Text(
+                const Text(
                   'Change Student/Delivery Mode', // Your generic name here
                   style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              trailing: Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
+              trailing: const Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
               onTap: () {
                 // Handle navigation to mode change page
               },
@@ -95,29 +95,43 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             // Settings 4 - About the developers
             ListTile(
               title:
-                Text(
-                  'About the Developers', // Your generic name here
+                const Text(
+                  'Manage your GET app', // Your generic name here
                   style: TextStyle(
                   color: Colors.white,
                 ),
               ),
-              trailing: Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
+              trailing: const Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
+              onTap: () {
+                // Handle navigation to about page
+              },
+            ),
+
+            // Settings 5 - About the developers
+            ListTile(
+              title:
+                const Text(
+                  'Bar Code for Mobile Purchase', // Your generic name here
+                  style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios), // Add an icon for navigation if needed
               onTap: () {
                 // Handle navigation to about page
               },
             ),
             
-            // Settings 5 - Delete Account
-            SizedBox(height: 50),
+            // Settings 6 - Delete Account
+            const SizedBox(height: 50),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.black, // Background color
-                onPrimary: Colors.white, // Text color
+                foregroundColor: Colors.white, backgroundColor: Colors.black, // Text color
               ),
               onPressed: () {
                 // Handle account deletion
               },
-              child: Text(
+              child: const Text(
                 'Delete Account',
                 style: TextStyle(fontSize: 16),
               ),

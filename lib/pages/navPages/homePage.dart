@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mocsmunchv2/pages/loginPages/authPage.dart';
 import 'package:mocsmunchv2/pages/navPages/friendsPage.dart';
 import 'package:mocsmunchv2/pages/miscPages/settingsPage.dart';
+import 'package:mocsmunchv2/pages/navPages/menusPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,8 +36,8 @@ class _HomePageState extends State<HomePage> {
   // Removed 'static const' from _pages list
   final List<Widget> _pages = [
     const Text('Interactive Map here'), // Example Page
+    const RestaurantMenuPage(), // Menu Page
     const FriendsPage(), //Friends Page
-    const Text('All Food Menu Tabs here'), // Example Page
   ];
 
   void _onItemTapped(int index) {
@@ -54,11 +55,13 @@ class _HomePageState extends State<HomePage> {
         leading: IconButton(
           onPressed: goToSettingsPage,
           icon: const Icon(Icons.settings),
+          color: Colors.white
         ),
         actions: [
           IconButton(
             onPressed: signUserOut,
             icon: const Icon(Icons.logout),
+            color: Colors.white
           ),
         ],
       ),
@@ -80,12 +83,12 @@ class _HomePageState extends State<HomePage> {
             label: "Map",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            label: "Friends",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.no_food),
             label: "Food",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: "Friends",
           ),
         ],
       ),

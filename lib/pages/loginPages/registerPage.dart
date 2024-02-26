@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/components/loginButton.dart';
 import 'package:mocsmunchv2/components/loginTextField.dart';
+import 'package:mocsmunchv2/pages/loginPages/userAccountPage.dart';
 
 
 class RegisterPage extends StatefulWidget {
@@ -20,54 +21,59 @@ class _RegisterPageState extends State<RegisterPage> {
   final confirmedPasswordController = TextEditingController();
 
  // sign user up method
-  void signUserUp() async {
-    // Show loading circle
-    showDialog(
-      context: context,
-      barrierDismissible: false, // User must tap button to dismiss
-      builder: (context) {
-        return const Center(child: CircularProgressIndicator());
-      },
-    );
+void signUserUp() async {
 
-    // Try creating the user
-    try {
-      if (passwordController.text == confirmedPasswordController.text) {
-        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
+  /* Show loading circle
+  showDialog(
+    context: context,
+    barrierDismissible: false, // User must tap button to dismiss
+    builder: (context) {
+      return const Center(child: CircularProgressIndicator());
+    },
+  ); */
 
-        // Get the user ID from the created user
-        String userId = userCredential.user!.uid;
+  // Try creating the user
+  try {
+    if (passwordController.text == confirmedPasswordController.text) {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
 
-        // Use the user ID to create a document in the 'users' collection in Firestore
-        await FirebaseFirestore.instance.collection('users').doc(userId).set({
-          'email': emailController.text,
-          // Add other user info you'd like to store, such as 'name', 'createdAt', etc.
-        });
+      // Get the user ID from the created user
+      String userId = userCredential.user!.uid;
 
-        // Pop the loading circle
-        Navigator.pop(context);
+      // Use the user ID to create a document in the 'users' collection in Firestore
+      await FirebaseFirestore.instance.collection('users').doc(userId).set({
+        'email': emailController.text,
+        // Add other user info you'd like to store, such as 'name', 'createdAt', etc.
+      });
 
-        // Navigate to another page or show a success message if needed
-        // ...
-
-      } else {
-        // Pop the loading circle
-        Navigator.pop(context);
-
-        // Show error message, passwords don't match
-        showErrorMessage("Passwords don't match");
-      }
-    } on FirebaseAuthException catch (e) {
       // Pop the loading circle
       Navigator.pop(context);
 
-      // Show error message
-      showErrorMessage(e.message ?? "An unknown error occurred");
+      // Navigate to UserAccountPage
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const UserAccountPage()),
+      );
+
+    } else {
+      // Pop the loading circle
+      Navigator.pop(context);
+
+      // Show error message, passwords don't match
+      showErrorMessage("Passwords don't match");
     }
+  } on FirebaseAuthException catch (e) {
+    // Pop the loading circle
+    Navigator.pop(context);
+
+    // Show error message
+    showErrorMessage(e.message ?? "An unknown error occurred");
   }
+}
+
 
   // Error message to user
   void showErrorMessage(String message) {
