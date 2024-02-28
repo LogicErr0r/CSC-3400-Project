@@ -1,6 +1,7 @@
   import 'package:firebase_auth/firebase_auth.dart';
   import 'package:flutter/material.dart';
 import 'package:mocsmunchv2/pages/loginPages/loginOrRegistar.dart';
+import 'package:mocsmunchv2/pages/loginPages/userAccountPage.dart';
 import 'package:mocsmunchv2/pages/navPages/homePage.dart';
 
 
@@ -16,7 +17,7 @@ import 'package:mocsmunchv2/pages/navPages/homePage.dart';
           //user is logged in
 
           if(snapshot.hasData){
-            return const HomePage();
+            return const UserAccountPage();
           }
           
         //user is not logged in

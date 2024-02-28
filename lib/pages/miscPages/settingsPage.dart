@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({Key? key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -18,6 +18,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         ),
         centerTitle: true, // Center align the title
         backgroundColor: Colors.black, // Change the color
+        iconTheme: IconThemeData(color: Colors.white), // Change the color of the navigation arrow
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),

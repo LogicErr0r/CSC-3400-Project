@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
             
                 // welcome back, you've been missed!
                 const Text(
-                  'Mocs Munch v0.0.1',
+                  'Mocs Munch v0.8.0',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
