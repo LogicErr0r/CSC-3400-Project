@@ -1,7 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mocsmunchv2/pages/navPages/homePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 class UserAccountPage extends StatefulWidget {
   const UserAccountPage({Key? key});
@@ -28,13 +32,28 @@ class _UserAccountPageState extends State<UserAccountPage> {
     });
   }
 
-  void homePage() {
-    // Implement the logic to navigate to the home page
+  void homePage() { //go to hme page logic
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const HomePage()),
       );
   }
+
+  
+  Future<void> saveUsername() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+        'username': _usernameController.text,
+      }, SetOptions(merge: true)); // Merge the existing feilds
+
+      homePage(); // Navigate to HomePage after saving the username
+    } else {
+    
+      print('No user is currently logged in.');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +61,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
       appBar: AppBar(
         title: Text(
           'Account Creation',
-          style: TextStyle(color: Colors.white), // Text color is now white
+          style: TextStyle(color: Colors.white), 
         ),
         backgroundColor: Colors.black,
       ),
@@ -57,7 +76,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
             Text(
               'What do we call you?',
               style: TextStyle(
-                color: Colors.white, // Text color is now white
+                color: Colors.white, 
                 fontSize: 20,
               ),
             ),
@@ -66,12 +85,12 @@ class _UserAccountPageState extends State<UserAccountPage> {
             ),
             TextField(
               controller: _usernameController,
-              style: TextStyle(color: Colors.black), // Text color is now black
+              style: TextStyle(color: Colors.black), 
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white, // Background color is now white
+                fillColor: Colors.white, 
                 hintText: 'Enter username here',
-                hintStyle: TextStyle(color: Colors.black54), // Hint text color is now black with opacity
+                hintStyle: TextStyle(color: Colors.black54), 
                 border: OutlineInputBorder(),
               ),
             ),
@@ -79,7 +98,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
             Text(
               "What's your swag like?",
               style: TextStyle(
-                color: Colors.white, // Text color is now white
+                color: Colors.white, 
                 fontSize: 20,
               ),
             ),
@@ -98,7 +117,7 @@ class _UserAccountPageState extends State<UserAccountPage> {
             Text(
               'What squad are you repping?',
               style: TextStyle(
-                color: Colors.white, // Text color is now white
+                color: Colors.white,
                 fontSize: 20,
               ),
             ),
@@ -136,7 +155,9 @@ class _UserAccountPageState extends State<UserAccountPage> {
             ),
             const SizedBox(height: 50),
             ElevatedButton(
-              onPressed: homePage,
+              onPressed: () {
+                saveUsername(); // Save the username and then navigate to the HomePage
+              },
               child: const Text('Take me to the food'),
             ),
           ],
