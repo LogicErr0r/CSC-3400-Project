@@ -76,7 +76,7 @@ class _FriendsPageState extends State<FriendsPage> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'Nearby Munchers', // Add the text you want to display
+                        'Available Munchers', // Add the text you want to display
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white, // Set text color to white

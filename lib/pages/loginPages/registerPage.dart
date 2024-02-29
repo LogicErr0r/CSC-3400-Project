@@ -22,7 +22,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
  // sign user up method
 void signUserUp() async {
-
   /* Show loading circle
   showDialog(
     context: context,
@@ -50,7 +49,7 @@ void signUserUp() async {
       });
 
       // Pop the loading circle
-      Navigator.pop(context);
+      // Navigator.pop(context);
 
       // Navigate to UserAccountPage
       Navigator.push(
@@ -60,14 +59,14 @@ void signUserUp() async {
 
     } else {
       // Pop the loading circle
-      Navigator.pop(context);
+      // Navigator.pop(context);
 
       // Show error message, passwords don't match
       showErrorMessage("Passwords don't match");
     }
   } on FirebaseAuthException catch (e) {
     // Pop the loading circle
-    Navigator.pop(context);
+    // Navigator.pop(context);
 
     // Show error message
     showErrorMessage(e.message ?? "An unknown error occurred");
@@ -75,17 +74,17 @@ void signUserUp() async {
 }
 
 
+
   // Error message to user
   void showErrorMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          backgroundColor: Colors.deepPurple,
+          return AlertDialog(
+          backgroundColor: Colors.black,
           title: Center(
-            child: Text(
-              message,
-              style: const TextStyle(color: Colors.white),
+            child: Text(message,
+            style: const TextStyle(color: Colors.white)
             ),
           ),
         );
