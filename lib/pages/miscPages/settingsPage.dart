@@ -31,11 +31,20 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               radius: 90,
               //backgroundImage: AssetImage('assets/profile_picture.jpg'), // Provide your image path here
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
+
+            //Greeting
+            const Text(
+              'what\'s up', // Your generic name here
+              style: TextStyle(
+                fontSize: 18,
+                color: Color.fromARGB(255, 217, 216, 216),
+              ),
+            ),
 
             // User's Name
             const Text(
-              'FirstName LastName', // Your generic name here
+              'CURRENT_USER', // Your generic name here
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

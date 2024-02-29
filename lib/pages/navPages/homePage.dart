@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mocsmunchv2/pages/loginPages/authPage.dart';
 import 'package:mocsmunchv2/pages/navPages/friendsPage.dart';
 import 'package:mocsmunchv2/pages/miscPages/settingsPage.dart';
+import 'package:mocsmunchv2/pages/navPages/mapPage.dart';
 import 'package:mocsmunchv2/pages/navPages/menusPage.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
 
   // Removed 'static const' from _pages list
   final List<Widget> _pages = [
-    const Text('Interactive Map here'), // Example Page
+    const MapPage(), // Map Page
     const RestaurantMenuPage(), // Menu Page
     const FriendsPage(), //Friends Page
   ];
