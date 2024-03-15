@@ -21,6 +21,14 @@ class Menu {
       foodTypes: foodTypeList,
     );
   }
+
+  List<dynamic> getFoodTypes(){
+    return foodTypes;
+  }
+
+  String getLocationName(){
+    return locationName;
+  }
 }
 
 // Food types subclass, used to hold the different types of food that a menu has
@@ -44,6 +52,14 @@ class FoodTypes {
       typeName: name,
       food: tempList, 
     );
+  }
+
+  List<dynamic> getFood(){
+    return food;
+  }
+
+  String getTypeName(){
+    return typeName;
   }
 }
 
@@ -76,5 +92,9 @@ class Food {
       vegitarian: tempBool,
       prices: foodList[2],
     );
+  }
+
+  String getName(){
+    return name;
   }
 }
