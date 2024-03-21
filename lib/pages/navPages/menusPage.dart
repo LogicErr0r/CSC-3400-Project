@@ -15,7 +15,7 @@ class _RestaurantMenuPageState extends State<RestaurantMenuPage> {
   final Map<String, dynamic> _menus = {};
   
   Future<dynamic> readJson() async {
-    final String response = await rootBundle.loadString('assets/menus.json');
+    final String response = await rootBundle.loadString('lib/assets/menus.json');
     final data = await json.decode(response);
     setState(() {
       _locations = data['locations'];

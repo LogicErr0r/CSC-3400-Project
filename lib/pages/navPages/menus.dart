@@ -1,7 +1,7 @@
 // Menu class
 class Menu {
   final String locationName;
-  List foodTypes = [];
+  List<FoodTypes> foodTypes = []; // Adjusted type here
 
   Menu({
     required this.locationName,
@@ -11,9 +11,14 @@ class Menu {
   // Menu constructor for the menus json file, creates a FoodType for each item in list
   factory Menu.fromJson(String location, Map<String, dynamic> json) {
     List tempList = json[location];
-    List foodTypeList = [];
-    for (int i = 0; i < tempList.length; i+=2) {
-      foodTypeList.add(FoodTypes.fromMenu(tempList[i], tempList[i+1]));
+    List<FoodTypes> foodTypeList = []; // Adjusted type here
+    for (int i = 0; i < tempList.length; i += 2) {
+      if (i + 1 < tempList.length) {
+        foodTypeList.add(FoodTypes.fromMenu(tempList[i], tempList[i + 1]));
+      } else {
+        // Handle the case where the list doesn't have enough elements
+        // You might want to log an error or handle this case according to your application's logic
+      }
     }
 
     return Menu(
@@ -22,11 +27,11 @@ class Menu {
     );
   }
 
-  List<dynamic> getFoodTypes(){
+  List<FoodTypes> getFoodTypes() { // Adjusted return type here
     return foodTypes;
   }
 
-  String getLocationName(){
+  String getLocationName() {
     return locationName;
   }
 }
@@ -34,31 +39,36 @@ class Menu {
 // Food types subclass, used to hold the different types of food that a menu has
 class FoodTypes {
   final String typeName;
-  List food = [];
+  List<Food> food = []; // Adjusted type here
 
   FoodTypes({
     required this.typeName,
     required this.food,
   });
 
-  // constructor creates Food fo each item in list
+  // constructor creates Food for each item in list
   factory FoodTypes.fromMenu(String name, List tempFood) {
-    List tempList = [];
-    for (int i = 0; i < tempFood.length; i+=2) {
-      tempList.add(Food.fromType(tempList[i], tempList[i+1]));
+    List<Food> tempList = []; // Adjusted type here
+    for (int i = 0; i < tempFood.length; i += 2) {
+      if (i + 1 < tempFood.length) {
+        tempList.add(Food.fromType(tempFood[i], tempFood[i + 1]));
+      } else {
+        // Handle the case where the list doesn't have enough elements
+        // You might want to log an error or handle this case according to your application's logic
+      }
     }
 
     return FoodTypes(
       typeName: name,
-      food: tempList, 
+      food: tempList,
     );
   }
 
-  List<dynamic> getFood(){
+  List<Food> getFood() { // Adjusted return type here
     return food;
   }
 
-  String getTypeName(){
+  String getTypeName() {
     return typeName;
   }
 }
@@ -67,34 +77,29 @@ class FoodTypes {
 class Food {
   final String name;
   List flavors = [];
-  final bool vegitarian;
+  final bool vegetarian;
   List prices = [];
 
   Food({
     required this.name,
     required this.flavors,
-    required this.vegitarian,
+    required this.vegetarian,
     required this.prices,
   });
 
   // Food constructor which takes inputs from foodList and extracts details to be more easily readable
   factory Food.fromType(String tempName, List foodList) {
-    bool tempBool;
-    if (foodList[1] == "Y"){
-      tempBool = true;
-    } else {
-      tempBool = false;
-    }
+    bool tempBool = foodList[1] == "Y";
 
     return Food(
       name: tempName,
       flavors: foodList[0],
-      vegitarian: tempBool,
+      vegetarian: tempBool,
       prices: foodList[2],
     );
   }
 
-  String getName(){
+  String getName() {
     return name;
   }
 }

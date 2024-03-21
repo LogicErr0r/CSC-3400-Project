@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("lib/assets/SplashScreenImage.png"),
+            image: AssetImage("lib/assets/images/SplashScreenImage.png"),
             fit: BoxFit.contain,
             ),
             gradient: LinearGradient(

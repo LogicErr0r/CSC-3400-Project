@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       width: 100, // Specify the desired width
                       height: 100, // Specify the desired height
-                      child: Image.asset('lib/assets/MocsMunchLogo.png'),
+                      child: Image.asset('lib/assets/images/MocsMunchLogo.png'),
                     ),
                   ],
                 ),
